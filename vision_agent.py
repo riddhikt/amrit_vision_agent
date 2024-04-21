@@ -69,12 +69,13 @@ async def describe_image(request: ImageRequest):
 
         # Send a POST request to the FastAPI server
         response = requests.post(compare_endpoint, json=payload, headers=headers)
-        if "true" or "True" in response.text:
-            return {"result": "true"}
-        elif "false" or "false" in response.text:
-            return {"result": "false"}
-        else:
-            return {"result": "some error occurred"}
+        print(response.text)
+        # Remove unwanted backticks and trim whitespace
+        clean_response = response.text
+        clean_response = clean_response.replace("```json", "").replace("```", "").strip()
+        # Convert the cleaned string to a JSON object
+        response_json = json.loads(clean_response)
+        return json.loads(response_json)
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
