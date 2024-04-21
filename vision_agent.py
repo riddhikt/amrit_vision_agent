@@ -11,7 +11,7 @@ from io import BytesIO
 import requests
 import uvicorn
 
-compare_endpoint = "http://localhost:8000/compare-task"
+compare_endpoint = "https://comparison-agent-1cb6f8c08878.herokuapp.com/compare-task"
 AGENT_ADDRESS = "agent1q292k4f2c0d2snxd276ynfyshxd3quzzxj93n2ehftgrwkdhfavhgxsmu5z"
 
 
